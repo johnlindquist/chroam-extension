@@ -1,0 +1,40 @@
+{
+    "manifest_version": 2,
+    "name": "Chroam Extension",
+    "description": "Injects Roam on current page",
+    "version": "1.0",
+    "commands": {
+        "show-roam": {
+            "suggested_key": {
+                "windows": "Ctrl+Shift+Y",
+                "mac": "Command+Shift+Y",
+                "chromeos": "Ctrl+Shift+U",
+                "linux": "Ctrl+Shift+J"
+            },
+            "description": "Show Roam",
+            "global": true
+        }
+    },
+    "content_scripts": [
+        {
+            "run_at": "document_end",
+            "matches": [
+                "https://*/*",
+                "http://*/*"
+            ],
+            "js": [
+                "js/content-script.js"
+            ]
+        }
+    ],
+    "browser_action": {},
+    "permissions": [
+        "activeTab",
+        "https://ajax.googleapis.com/"
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    }
+}
